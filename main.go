@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	assetData := &infrastructure.AssetData{}
-	assetService := &application.AssetService{Repo: assetData}
-	assets, _ := assetService.GetAssets()
+	assetRepo := &infrastructure.AssetData{}
+	assetService := application.NewAssetService(assetRepo)
+	cli := presentation.NewCLI(assetService)
 
-	presentation.DisplayAssets(assets)
+	cli.Run()
 }

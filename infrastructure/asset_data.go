@@ -1,17 +1,32 @@
 package infrastructure
 
-import (
-	"github.com/martin-1101/portfManager/domain"
-)
+import "github.com/martin-1101/portfManager/domain"
 
 type AssetData struct{}
 
 func (ad *AssetData) GetAssets() ([]domain.Asset, error) {
-	// Aquí obtendrías los datos de los activos en tiempo real, pero usaremos datos hardcodeados
+	// Aquí es donde buscarías los datos de los activos en tiempo real
+	// desde una fuente externa o una base de datos.
+	// Por ahora, simplemente devolveremos algunos activos de ejemplo.
+
 	assets := []domain.Asset{
-		{"AAPL", 150.50, 0.35, 0.23, 2.5e12, 5e6},
-		{"GOOGL", 1050.25, -5.10, -0.48, 1.5e12, 2e6},
-		{"TSLA", 900.85, 10.25, 1.15, 1e12, 8e6},
+		{
+			Symbol:         "AAPL",
+			Price:          135.20,
+			PriceChange:    -0.75,
+			PriceChangePct: -0.55,
+			MarketCap:      2.3e12,
+			Volume:         9.2e7,
+		},
+		{
+			Symbol:         "GOOGL",
+			Price:          2100.0,
+			PriceChange:    5.25,
+			PriceChangePct: 0.25,
+			MarketCap:      1.4e12,
+			Volume:         1.3e6,
+		},
 	}
+
 	return assets, nil
 }
